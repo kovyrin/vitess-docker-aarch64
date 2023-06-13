@@ -2,12 +2,10 @@ ARG mysql_version=8.0.31
 ARG go_version=1.20.5
 
 ARG vitess_branch=release-16.0
-ARG vitess_revision=HEAD
 
 FROM arm64v8/mysql:${mysql_version} AS builder
 
 ARG vitess_branch
-ARG vitess_revision
 ARG go_version
 
 ENV GOLANG_VERSION=${go_version}
@@ -43,10 +41,6 @@ RUN mkdir -p /vt/src/vitess.io && \
     cd /vt/src/vitess.io && \
     git clone --depth=1 --branch=${vitess_branch} https://github.com/vitessio/vitess.git vitess && \
     cd vitess && \
-    # If the commit specified is not the HEAD of the branch or within the first (depth) commits, this will fetch it.
-    # Note that this does not check whether the commit is actually part of the branch.
-    git fetch --depth 1 origin ${vitess_revision} && \
-    git checkout FETCH_HEAD && \
     chown -R vitess:vitess /vt/src/vitess.io
 
 # Download vendored Go dependencies

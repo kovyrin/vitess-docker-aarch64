@@ -10,12 +10,5 @@ if [ -z "${DOCKER_BIN}" ]; then
     exit 1
 fi
 
-MYSQL_FLAVOR=${1:-"mysql80"}
 TAG="kovyrin/vttestserver-arm64v8:mysql-${MYSQL_VERSION}-vitess-${VITESS_VERSION}"
-DOCKERFILE=Dockerfile.${MYSQL_FLAVOR}-arm64v8
-
-exec ${DOCKER_BIN} build \
-    --build-arg vitess_branch=${VITESS_VERSION} \
-    --build-arg mysql_version=${MYSQL_VERSION} \
-    -t ${TAG} \
-    -f ${DOCKERFILE} .
+${DOCKER_BIN} push ${TAG}
