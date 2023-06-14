@@ -22,7 +22,9 @@ RUN microdnf -y install \
     make \
     util-linux \
     unzip \
-    zip
+    zip \
+    net-tools \
+    procps
 
 # Set up Vitess environment (equivalent to '. dev.env')
 ENV VTROOT /vt/src/vitess.io/vitess
@@ -63,6 +65,12 @@ RUN make install-testing PREFIX=/vt/install
 #------------------------------------------------------------------------------
 
 FROM arm64v8/mysql:${mysql_version}
+
+# Install Vitess build dependencies
+RUN microdnf -y install \
+    hostname \
+    net-tools \
+    procps
 
 ARG mysql_version
 ENV MYSQL_VERSION=${mysql_version}
