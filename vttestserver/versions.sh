@@ -1,3 +1,4 @@
-# Set versions here for building and pushing the images
-VITESS_VERSION="v17.0.1"
-MYSQL_VERSION="8.0.31"
+VITESS_VERSION="17.0.1"
+MYSQL_VERSION="8.0.34"
+GO_VERSION="1.20.5"
+BUILD_NUMBER="1"

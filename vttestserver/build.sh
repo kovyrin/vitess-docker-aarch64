@@ -15,7 +15,9 @@ TAG="kovyrin/vttestserver-arm64v8:mysql-${MYSQL_VERSION}-vitess-${VITESS_VERSION
 DOCKERFILE=Dockerfile.${MYSQL_FLAVOR}-arm64v8
 
 exec ${DOCKER_BIN} build \
-    --build-arg vitess_branch=${VITESS_VERSION} \
+    --build-arg vitess_version=${VITESS_VERSION} \
     --build-arg mysql_version=${MYSQL_VERSION} \
+    --build-arg go_version=${GO_VERSION} \
+    --build-arg BUILD_NUMBER=${BUILD_NUMBER} \
     -t ${TAG} \
     -f ${DOCKERFILE} .

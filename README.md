@@ -1,5 +1,5 @@
 # vitess-docker-aarch64
-Docker Images for Vitess working on aarch64 (aka Apple Silicon) 
+Docker Images for Vitess working on aarch64 (aka Apple Silicon)
 
 ## Using the image
 
@@ -9,8 +9,8 @@ An example command to run the image is available in the `run-example.sh` file.
 
 ## Release Process
 
-1. Update the version in `versions.sh`
+1. Update the MySQL, Vitess or Go versions in `versions.sh`
 2. Run `build.sh`
 3. Run `run-example.sh` and verify that the server works
 4. Run `push.sh` to release the image
-5. Commit and push the changes GitHub.
+5. Commit and push the changes GitHub
